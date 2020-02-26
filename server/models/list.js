@@ -5,7 +5,7 @@ const listSchema = new Schema({
   name: String,
   tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }],
   owner: { type: Schema.Types.ObjectId, ref: 'User' },
-  boardId: { type: Schema.Types.ObjectId, ref: 'Board' }
+  board: { type: Schema.Types.ObjectId, ref: 'Board' },
 }, {
   toJSON: {
     transform: function (doc, ret) {

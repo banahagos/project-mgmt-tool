@@ -37,7 +37,6 @@ router.put('/:id', async (req, res, next) => {
 
   try {
     const board = await Board.findById(req.params.id)
-
     if (!board.owner.equals(req.user._id)) {
       res.status(400).json({ message: 'user has no access rights' });
     } else {
