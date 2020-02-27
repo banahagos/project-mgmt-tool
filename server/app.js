@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const authRouter = require('./routes/auth');
 const boardRouter = require('./routes/projects/boards');
 const listRouter = require('./routes/projects/lists');
+const taskRouter = require('./routes/projects/tasks');
 
 const app = express();
 
@@ -54,7 +55,8 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/projects/boards', boardRouter);
-app.use('/api/projects/lists', listRouter)
+app.use('/api/projects/lists', listRouter);
+app.use('/api/projects/tasks', taskRouter)
 
 
 

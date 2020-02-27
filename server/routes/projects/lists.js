@@ -2,6 +2,17 @@ const express = require('express');
 const router = express.Router();
 const List  = require('../../models/list');
 
+
+// GET all list incl task of a specific board
+router.get('/:boardId', async (req, res, next) => {
+  try {
+    const lists = await List.find({ board: req.params.boardId }).populate('tasks')
+    res.json(lists)
+  } catch (err) {
+    res.json(err)
+  }
+});
+
 // Create new lists for your board
 router.post('/:boardId/new-list', async (req, res, next) => {
   if (!req.body.name) {
@@ -16,16 +27,6 @@ router.post('/:boardId/new-list', async (req, res, next) => {
     res.json(err)
   }
 })
-
-// GET all list of a specific board
-router.get('/:boardId', async (req, res, next) => {
-  try {
-    const lists = await List.find({ board: req.params.boardId })
-    res.json(lists)
-  } catch (err) {
-    res.json(err)
-  }
-});
 
 // Update specific list
 router.put('/:id', async (req, res, next) => {

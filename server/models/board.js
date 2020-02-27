@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 
 const boardSchema = new Schema({
   name: String,
-  // lists: [{ type: Schema.Types.ObjectId, ref: 'List'}], 
   owner: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
   toJSON: {

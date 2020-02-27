@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const taskSchema = new Schema({
   name: String,
-  listId: { type: Schema.Types.ObjectId, ref: 'Board' }
+  owner: { type: Schema.Types.ObjectId, ref: 'User' },
 }, {
   toJSON: {
     transform: function (doc, ret) {
